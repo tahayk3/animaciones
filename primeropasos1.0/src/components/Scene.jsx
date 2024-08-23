@@ -37,12 +37,19 @@ function Scenes() {
         //Agregando un cubo
         const cube = new THREE.Mesh(
             new THREE.BoxGeometry(1,1,1),
-            new THREE.MeshBasicMaterial({ color: 0x0d2afd })
+            new THREE.MeshBasicMaterial({
+                color: 0x0d2afd,
+                transparent: true,
+                opacity:0.3,
+                wireframe: false,
+            })
         )
 
         //Agregando esfera
         const geometry = new THREE.SphereGeometry( 0.8, 32, 16 ); 
-        const material = new THREE.MeshBasicMaterial( { color: 0xfaa923 } ); 
+        const material = new THREE.MeshBasicMaterial({
+            color: 0xfaa923
+        }); 
         const sphere = new THREE.Mesh( geometry, material ); 
         scene.add( sphere );
         sphere.position.x = 2
@@ -50,7 +57,7 @@ function Scenes() {
 
         //Agregando torus
         const geometry1 = new THREE.TorusKnotGeometry( 0.3, 0.1, 100, 16 ); 
-        const material1 = new THREE.MeshBasicMaterial( { color: 0xf72834 } ); 
+        const material1 = new THREE.MeshNormalMaterial({flatShading: true}); 
         const torusKnot = new THREE.Mesh( geometry1, material1 ); 
         scene.add( torusKnot );
         torusKnot.position.set(-2,-0.5, 0)
