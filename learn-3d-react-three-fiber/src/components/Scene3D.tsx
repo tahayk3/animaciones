@@ -24,7 +24,7 @@ const Model = () => {
 
 export const Scene3D = () => {
   return (
-    <Canvas shadows>
+    <Canvas className="canvas-container">
       {/* Configuración de la cámara */}
       <PerspectiveCamera
         makeDefault

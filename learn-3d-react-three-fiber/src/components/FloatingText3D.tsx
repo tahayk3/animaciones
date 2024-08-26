@@ -2,7 +2,6 @@ import { useFrame } from "@react-three/fiber";
 import { Text } from "@react-three/drei";
 import { useRef, useState } from "react";
 import * as THREE from "three";
-import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 
 export const FloatingText3D = ({
   text,
@@ -11,7 +10,8 @@ export const FloatingText3D = ({
   text: string;
   position: [number, number, number];
 }) => {
-  const ref = useRef<THREE.Mesh>(null);
+  const textRef = useRef<THREE.Mesh>(null);
+  const planeRef = useRef<THREE.Mesh>(null);
   const [randomOffset] = useState(
     () =>
       new THREE.Vector3(
@@ -22,24 +22,38 @@ export const FloatingText3D = ({
   );
 
   useFrame(({ clock }) => {
-    if (ref.current) {
+    if (textRef.current && planeRef.current) {
       const t = clock.getElapsedTime();
-      ref.current.position.x = position[0] + randomOffset.x + Math.sin(t) * 0.5;
-      ref.current.position.y = position[1] + randomOffset.y + Math.cos(t) * 0.5;
-      ref.current.position.z = position[2] + randomOffset.z + Math.sin(t) * 0.5;
+      textRef.current.position.x = position[0] + randomOffset.x + Math.sin(t) * 0.5;
+      textRef.current.position.y = position[1] + randomOffset.y + Math.cos(t) * 0.5;
+      textRef.current.position.z = position[2] + randomOffset.z + Math.sin(t) * 0.5;
+
+      planeRef.current.position.copy(textRef.current.position);
     }
   });
 
   return (
-    <Text
-      ref={ref}
-      position={[0, 0, 0]}
-      fontSize={0.3}
-      color="#FFD700"
-      anchorX="center"
-      anchorY="middle"
-    >
-      {text}
-    </Text>
+    <>
+      {/* Fondo del texto */}
+      <mesh
+        ref={planeRef}
+        position={[0, 0, 5]} // Ajusta la posición del plano para que esté detrás del texto
+      >
+        <boxGeometry args={[1, 0.5, 0]} /> {/* Ajusta el tamaño del fondo */}
+        <meshBasicMaterial color="green" opacity={0.3} transparent={true} />
+      </mesh>
+      
+      {/* Texto 3D */}
+      <Text
+        ref={textRef}
+        position={[0, 0, 0]}
+        fontSize={0.3}
+        color="#000"
+        anchorX="center"
+        anchorY="middle"
+      >
+        {text}
+      </Text>
+    </>
   );
 };
