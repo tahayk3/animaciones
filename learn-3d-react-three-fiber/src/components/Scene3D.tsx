@@ -42,7 +42,7 @@ export const Scene3D = () => {
       />
       <ambientLight intensity={0} />
       {/* añadiendo particulas */}
-      <Sparkles size={6} scale={[10, 5, 10]} speed={0.5} color="gray" />
+      <Sparkles size={6} scale={[10, 5, 10]} speed={0.5} color="white" />
       <Model />
       {/* Texto flotante alrededor del modelo */}
       <FloatingText3D text="React" position={[2, 5, 0]} />

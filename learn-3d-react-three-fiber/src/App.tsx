@@ -1,5 +1,6 @@
 // App.tsx
-import './App.css';
+import "./App.css";
+import Carousel from "./components/Carousel";
 import { Scene3D } from "./components/Scene3D";
 
 const App = () => {
@@ -11,7 +12,7 @@ const App = () => {
       <main className="main">
         {/* Texto a la izquierda */}
         <div className="text-container">
-          <h2 style={{ color: "#000", textAlign: "center" }}>
+          <h2 style={{ color: "#fff", textAlign: "center" }}>
             Aquí puedes poner tu texto o descripción
           </h2>
         </div>
@@ -20,6 +21,9 @@ const App = () => {
           <Scene3D />
         </div>
       </main>
+      <div className="carousel">
+        <Carousel />
+      </div>
       <footer className="footer">
         <p>© 2024</p>
       </footer>

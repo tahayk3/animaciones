@@ -48,7 +48,7 @@ export const FloatingText3D = ({
         ref={textRef}
         position={[0, 0, 0]}
         fontSize={0.3}
-        color="#000"
+        color="#fff"
         anchorX="center"
         anchorY="middle"
       >

@@ -1,44 +1,69 @@
-.canvas-container {
-  width: 100%;
-  height: 100%;
+body{
+  background-color: #000;
 }
 
-/* App.css */
 .container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  width: 100%;
   margin: 0;
+  overflow: hidden; /* Evita el scroll en el contenedor principal */
 }
 
 .header {
-  padding: 20px;
   background: #282c34;
   color: white;
   text-align: center;
 }
 
 .main {
-  flex: 1;
   display: flex;
   flex-direction: row;
-  overflow: hidden; /* Evita el desbordamiento */
+  min-height: calc(100vh - 80px - 40px);
+  padding: 20px;
+  box-sizing: border-box;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten si es necesario */
 }
 
 .text-container, .model-container {
+  color: white;
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
+  min-width: 300px; /* Asegura que los contenedores no sean demasiado pequeños */
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column; /* Cambia la dirección del flex a columna en pantallas más pequeñas */
+    padding: 10px; /* Reduce el padding para dispositivos móviles */
+  }
+
+  .text-container, .model-container {
+    flex: none; /* Desactiva el flex en dispositivos móviles para un mejor control del tamaño */
+    width: 100%; /* Asegura que los contenedores ocupen todo el ancho disponible */
+    min-width: auto; /* Elimina el ancho mínimo en pantallas pequeñas */
+    padding: 10px; /* Reduce el padding en dispositivos móviles */
+  }
 }
 
 .text-container {
-  background-color: #fff;
+  background-color: #000;
+  color: white;
 }
 
 .model-container {
-  background-color: #fff; /* Color de fondo opcional */
+  background-color: #000;
+}
+
+.carousel {
+  width: 100%;
+  margin: 0 auto; /* Centra el carrusel */
+  padding: 0px 0px 25px 0px; /* Asegura que haya espacio alrededor del carrusel */
+  background-color: #000; /* Fondo opcional para el carrusel */
 }
 
 .footer {
@@ -47,3 +72,6 @@
   color: white;
   text-align: center;
 }
+
+
+
