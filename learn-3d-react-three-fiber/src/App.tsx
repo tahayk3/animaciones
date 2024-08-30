@@ -1,9 +1,24 @@
 // App.tsx
+import { useEffect, useState } from "react";
 import "./App.css";
 import Carousel from "./components/Carousel";
 import { Scene3D } from "./components/Scene3D";
+import Scene3DScroll from "./components/MovingObject";
 
 const App = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className="container">
       <header className="header">
@@ -23,6 +38,9 @@ const App = () => {
       </main>
       <div className="carousel">
         <Carousel />
+      </div>
+      <div className="ScrollComponent" style={{height: '100vh'}}>
+        <Scene3DScroll scrollY={scrollY} />
       </div>
       <footer className="footer">
         <p>© 2024</p>
