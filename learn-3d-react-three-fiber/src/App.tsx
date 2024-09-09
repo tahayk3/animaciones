@@ -5,6 +5,8 @@ import Carousel from "./components/Carousel";
 import { Scene3D } from "./components/Scene3D";
 import Scene3DScroll from "./components/MovingObject";
 
+import {PruebaModeloPropio}  from "./components/PruebaModeloPropio";
+
 const App = () => {
   const [scrollY, setScrollY] = useState(0);
 
@@ -41,6 +43,9 @@ const App = () => {
       </div>
       <div className="ScrollComponent" style={{height: '100vh'}}>
         <Scene3DScroll scrollY={scrollY} />
+      </div>
+      <div className="ScrollComponent" style={{height: '100vh'}}>
+        <PruebaModeloPropio/>
       </div>
       <footer className="footer">
         <p>© 2024</p>
